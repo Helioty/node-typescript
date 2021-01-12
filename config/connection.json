@@ -1,0 +1,65 @@
+{
+    "desenv": {
+        "user": "sfc",
+        "password": "sfc",
+        "host": "FCBKP_IMB",  
+        "poolMin": 0,
+        "poolMax": 4,
+        "poolIncrement": 1,
+        "poolTimeout"   : 4 
+    },    
+    "imb": {
+        "user": "wms",
+        "password": "wmsfc2016",
+        "host": "FCIMB", 
+        "poolMin": 1,
+        "poolMax": 4,
+        "poolIncrement": 1,
+        "poolTimeout"   : 4
+    },        
+    "jpa": {
+        "user": "wms",
+        "password": "wmsfc2016",
+        "host": "FCJPA-SCAN/FCJPA",  
+        "poolMin": 0,
+        "poolMax": 4,
+        "poolIncrement": 1,
+        "poolTimeout"   : 4
+    },
+    "tam": {
+        "user": "wms",
+        "password": "wmsfc2016",
+        "host": "FCTAM-SCAN/FCTAM",  
+        "poolMin": 0,
+        "poolMax": 4,
+        "poolIncrement": 1,
+        "poolTimeout"   : 4
+    },                
+    "aju": {
+        "user": "wms",
+        "password": "wmsfc2016",
+        "host": "FCAJU-SCAN/FCAJU",  
+        "poolMin": 0,
+        "poolMax": 4,
+        "poolIncrement": 1,
+        "poolTimeout"   : 4
+    },
+    "gus": {
+        "user": "wms",
+        "password": "wmsfc2016",
+        "host": "FCGUS-SCAN/FCGUS",  
+        "poolMin": 0,
+        "poolMax": 4,
+        "poolIncrement": 1,
+        "poolTimeout"   : 4
+    },
+     "sal": {
+        "user": "wms",
+        "password": "wmsfc2016",
+        "host": "FCSAL-SCAN/FCSAL",  
+        "poolMin": 0,
+        "poolMax": 4,
+        "poolIncrement": 1,
+        "poolTimeout"   : 4
+    }            
+  }
