@@ -2,7 +2,7 @@ import config from 'config';
 import oracledb, { Pool, PoolAttributes } from 'oracledb';
 import chalk from 'chalk';
 
-const dbConfig = ((): ConnectionStance => {
+export const dbConfig = ((): ConnectionStance => {
     if (process.argv[2] && process.argv[2] !== null) {
         if (config.has(`App.connection.${process.argv[2]}`)) {
             return config.get<ConnectionStance>(

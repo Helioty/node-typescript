@@ -5,6 +5,7 @@ import { ForecastController } from './controllers/forecast';
 import * as database from './database';
 import bodyParser from 'body-parser';
 import './util/module-alias';
+import chalk from 'chalk';
 import cors from 'cors';
 
 export class SetupServer extends Server {
@@ -34,6 +35,7 @@ export class SetupServer extends Server {
             console.log('Inicializando database module \n');
             await database.connect().then(() => {
                 console.log('Connection pool started \n');
+                console.log('Connected to', chalk.yellow(database.dbConfig.host), '\n');
             });
         } catch (err) {
             console.error(err);
