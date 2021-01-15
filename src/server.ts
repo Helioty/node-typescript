@@ -1,36 +1,54 @@
-// import { ConnectionStance } from './index';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
+import { AppsController } from './controllers/apps';
 import { ForecastController } from './controllers/forecast';
+import * as database from './database';
 import bodyParser from 'body-parser';
-import oracledb from 'oracledb';
 import './util/module-alias';
+import cors from 'cors';
 
 export class SetupServer extends Server {
-    constructor(private port = 3001) {
+    constructor(private port = 8080) {
         super();
     }
 
-    public init(): void {
+    public async init(): Promise<void> {
         this.setupExpress();
-        this.setupOracledb();
         this.setupControllers();
+        await this.setupOracledb();
     }
 
     private setupExpress(): void {
         this.app.use(bodyParser.json());
-    }
-
-    private async setupOracledb(): Promise<any> {
-        // return await oracledb.createPool().catch(() => {
-        //     console.log(`Error on try to connect to database!`);
-        //     process.exit();
-        // });
+        this.app.use(cors());
     }
 
     private setupControllers(): void {
         const forecastController = new ForecastController();
-        this.addControllers([forecastController]);
+        const appsController = new AppsController();
+        this.addControllers([appsController, forecastController]);
+    }
+
+    private async setupOracledb(): Promise<void> {
+        try {
+            console.log('Inicializando database module \n');
+            await database.connect().then(() => {
+                console.log('Connection pool started \n');
+            });
+        } catch (err) {
+            console.error(err);
+            process.exit(1); // Código de falha diferente de zero
+        }
+    }
+
+    public start(): void {
+        this.app.listen(this.port, () => {
+            console.log('Server listening on port:', this.port);
+        });
+    }
+
+    public async close(): Promise<void> {
+        await database.close();
     }
 
     public getApp(): Application {

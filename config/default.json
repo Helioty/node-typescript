@@ -1,5 +1,6 @@
 {
     "App": {
+        "port": 8080,
         "resources": {
             "apiToken": "token"
         },
