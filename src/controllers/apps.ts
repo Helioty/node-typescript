@@ -10,22 +10,4 @@ export class AppsController {
         const newApp = await appService.createApp(req.body);
         res.status(201).send(newApp);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
 }

@@ -5,7 +5,9 @@ import chalk from 'chalk';
 const dbConfig = ((): ConnectionStance => {
     if (process.argv[2] && process.argv[2] !== null) {
         if (config.has(`App.connection.${process.argv[2]}`)) {
-            return config.get<ConnectionStance>(`App.connection.${process.argv[2]}`)
+            return config.get<ConnectionStance>(
+                `App.connection.${process.argv[2]}`
+            );
         } else {
             console.log(chalk.red('\nATENÇÃO!\n'));
             console.log('A estancia informada não existe!\n');

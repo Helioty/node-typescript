@@ -6,7 +6,9 @@ describe('Apps functional tests', () => {
                 packageId: 'br.com.ferreiracosta.vendas',
             };
 
-            const response = await global.testRequest.post('/apps').send(app);
+            const response = await global.testRequest
+                .post('/apps/new')
+                .send(app);
             expect(response.status).toBe(201);
             expect(response.body).toEqual(expect.objectContaining(app));
         });
