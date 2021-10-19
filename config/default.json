@@ -1,6 +1,6 @@
 {
     "App": {
-        "port": 8080,
+        "port": 8081,
         "resources": {
             "apiToken": "token"
         },
@@ -10,6 +10,24 @@
                 "password": "sfc",
                 "host": "FCBKP_IMB",
                 "poolMin": 0,
+                "poolMax": 4,
+                "poolIncrement": 1,
+                "poolTimeout": 4
+            },
+            "bkpcorp": {
+                "user": "sfc",
+                "password": "sfc",
+                "host": "FCBKP_CORP_NOVO",
+                "poolMin": 1,
+                "poolMax": 4,
+                "poolIncrement": 1,
+                "poolTimeout": 4
+            },
+            "corp": {
+                "user": "fcosta",
+                "password": "fcosta2013",
+                "host": "FCCORP",
+                "poolMin": 1,
                 "poolMax": 4,
                 "poolIncrement": 1,
                 "poolTimeout": 4

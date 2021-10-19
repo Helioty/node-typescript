@@ -1,0 +1,193 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "version": "1.3.5",
+        "title": "Aquila Node.JS Typescript API",
+        "description": "API de serviços Aquila."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8081",
+            "description": "The Local server."
+        },
+        {
+            "url": "https://wms.api.imb",
+            "description": "The Production server."
+        }
+    ],
+    "paths": {
+        "/apps/new": {
+            "post": {
+                "description": "Register a new App",
+                "operationId": "newApp",
+                "parameters": [],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/App"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "The App has been created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppCreatedResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "message": "Invalid parameters",
+                                    "code": "400",
+                                    "error": "Bad Request"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aquila/infoPessoal/{matricula}": {
+            "get": {
+                "description": "Retorna a informação pessoal da matricula informada.",
+                "operationId": "getInfoPessoal",
+                "parameters": [
+                    {
+                        "name": "matricula",
+                        "in": "path",
+                        "schema": {
+                            "type": "number"
+                        },
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return informação pessoal",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InfoPessoal"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                },
+                                "example": {
+                                    "message": "Invalid parameters",
+                                    "code": "400",
+                                    "error": "Bad Request"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "stringGenerica": {
+                "type": "string",
+                "example": "vendas"
+            },
+            "numberGenerico": {
+                "type": "number",
+                "example": "12345"
+            },
+            "packageId": {
+                "type": "string",
+                "example": "br.com.ferreiracosta.vendas"
+            },
+            "id": {
+                "type": "string",
+                "example": "fake-id"
+            },
+            "matricula": {
+                "type": "number",
+                "example": "7571"
+            },
+            "InfoPessoal": {
+                "type": "object",
+                "properties": {
+                    "matricula": {
+                        "$ref": "#/components/schemas/matricula"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/stringGenerica"
+                    },
+                    "cargo": {
+                        "$ref": "#/components/schemas/stringGenerica"
+                    },
+                    "empresa": {
+                        "$ref": "#/components/schemas/numberGenerico"
+                    }
+                }
+            },
+            "App": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/stringGenerica"
+                    },
+                    "packageId": {
+                        "$ref": "#/components/schemas/packageId"
+                    }
+                }
+            },
+            "AppCreatedResponse": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/stringGenerica"
+                    },
+                    "packageId": {
+                        "$ref": "#/components/schemas/packageId"
+                    },
+                    "id": {
+                        "$ref": "#/components/schemas/id"
+                    }
+                }
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "number"
+                    },
+                    "error": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "documentation": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

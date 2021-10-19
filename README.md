@@ -1,1 +1,1 @@
-This is a Node.js + Typescript API with Oracledb.
+This is a Node + Typescript API with Oracledb.

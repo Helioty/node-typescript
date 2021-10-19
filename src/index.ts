@@ -12,14 +12,14 @@ import { SetupServer } from './server';
 
         cluster.on('exit', (worker, code, signal) => {
             console.log(
-                `Worker ${worker.process.pid} died with code: ${code}, and signal: ${signal}`
+                `\nWorker ${worker.process.pid} died with code: ${code}, and signal: ${signal}`
             );
             console.log('Iniciando um novo worker');
             cluster.fork();
         });
     } else {
         console.log(chalk.bgGreen.black('\n Iniciando! \n'));
-        const server = new SetupServer(config.get('App.port'));
+        const server = new SetupServer(config.get('server.port') || config.get('server.port'));
         await server.init();
         server.start();
     }

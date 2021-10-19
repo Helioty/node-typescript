@@ -1,0 +1,19 @@
+# Mest.JS config example
+# db:
+#   type: 'oracle'
+#   name: 'FCBKP_CORP_NOVO'
+#   host: 'FCIMB-SCAN'
+#   port: 1521
+#   sid: 'FCIMB'
+#   synchronize: false
+#   username: 'fcosta'
+#   password: 'fcosta2013'
+
+db:
+  user: 'fcosta'
+  password: 'fcosta2013'
+  host: 'FCCORP'
+  poolMin: 1
+  poolMax: 4
+  poolIncrement: 1
+  poolTimeout: 4
